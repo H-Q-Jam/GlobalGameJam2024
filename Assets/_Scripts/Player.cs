@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
+    /*
     private NetworkCharacterController _cc;
 
     private void Awake()
@@ -20,4 +21,5 @@ public class Player : NetworkBehaviour
             _cc.Move(5 * data.direction * Runner.DeltaTime);
         }
     }
+    */
 }
