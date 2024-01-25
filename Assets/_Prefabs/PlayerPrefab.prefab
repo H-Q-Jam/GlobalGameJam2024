@@ -48,13 +48,19 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 4192435152
   ObjectInterest: 0
-  Flags: 262145
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 264449
+  NetworkGuid:
+    RawGuidValue: 5d040a9a1309e1c48af7a0f0804e6626
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4164326444670549865}
   - {fileID: 5303112041349433277}
+  SimulationBehaviours: []
 --- !u!143 &4068161218526138884
 CharacterController:
   m_ObjectHideFlags: 0
@@ -93,6 +99,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378411a89480da345945c2f888327a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 0}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
   gravity: -9.81
   jumpImpulse: 5
   acceleration: 10
@@ -111,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 807080a79bc9d4745a8d99ff27d09bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1001 &3841586447885464281
 PrefabInstance:
   m_ObjectHideFlags: 0
