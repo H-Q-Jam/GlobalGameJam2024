@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,8 +14,37 @@ public partial class MotManager : MonoBehaviour
     //ReadOnly dans MotManager_Editor
     [SerializeField] private List<Zone> zones = new ();
 
-    private Dictionary<Zone, Lettre> zonesToLettre = new ();
-    private Dictionary<Lettre, Mot> lettreToMot = new ();
+    private readonly Dictionary<Zone, Lettre> zonesToLettre = new ();
+    private readonly Dictionary<Lettre, Mot> lettreToMot = new ();
+
+    private void Awake()
+    {
+        Mot[] newMots = FindObjectsOfType<Mot>();
+        for (int i = 0; i < newMots.Length; i++)
+        {
+            Mot newMot = newMots[i];
+            mots.Add(newMot);
+            switch (newMot.Equipe)
+            {
+                case 1:
+                    equipe1 = newMot;
+                    break;
+                case 2:
+                    equipe2 = newMot;
+                    break;
+            }
+            lettres.AddRange(newMot.Lettres);
+            foreach (var newLettre in newMot.Lettres)
+            {
+                lettreToMot.TryAdd(newLettre, newMot);
+                zones.AddRange(newLettre.Zones);
+                foreach (var zone in newLettre.Zones)
+                {
+                    zonesToLettre.TryAdd(zone, newLettre);
+                }
+            }
+        }
+    }
 
     public bool GetLettreFromZone(Zone zone, out Lettre lettre)
     {
