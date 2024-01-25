@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 
 public partial class MotManager : MonoBehaviour
@@ -7,10 +6,22 @@ public partial class MotManager : MonoBehaviour
     [SerializeField] private Mot equipe1;
     [SerializeField] private Mot equipe2;
 
-    [SerializeField, ReadOnly] private List<Mot> mots = new ();
-    [SerializeField, ReadOnly] private List<Lettre> lettres = new ();
-    [SerializeField, ReadOnly] private List<Zone> zones = new ();
+    //ReadOnly dans MotManager_Editor
+    [SerializeField] private List<Mot> mots = new ();
+    //ReadOnly dans MotManager_Editor
+    [SerializeField] private List<Lettre> lettres = new ();
+    //ReadOnly dans MotManager_Editor
+    [SerializeField] private List<Zone> zones = new ();
 
-    private Dictionary<Zone, Lettre> zonesToLettre;
-    private Dictionary<Lettre, Mot> lettreToMot;
+    private Dictionary<Zone, Lettre> zonesToLettre = new ();
+    private Dictionary<Lettre, Mot> lettreToMot = new ();
+
+    public bool GetLettreFromZone(Zone zone, out Lettre lettre)
+    {
+        return zonesToLettre.TryGetValue(zone, out lettre);
+    }
+    public bool GetMotFromLettre(Lettre lettre, out Mot mot)
+    {
+        return lettreToMot.TryGetValue(lettre, out mot);
+    }
 }
