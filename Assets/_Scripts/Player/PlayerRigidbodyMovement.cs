@@ -35,8 +35,6 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     {
         GetIsRunning();
 
-
-
         //jump here, in the fixedUpdate it doesn't works everytime
         CheckIsGrounded();
         if (isGrounded)
@@ -51,11 +49,9 @@ public class PlayerRigidbodyMovement : MonoBehaviour
 
 
     private void FixedUpdate()
-    {
-        
+    {   
         HandleMoveInput();
         Move();
-       
     }
 
     private void HandleMoveInput()
@@ -63,7 +59,6 @@ public class PlayerRigidbodyMovement : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         direction = new Vector3(x, rb.velocity.y, z);
-
     }
 
 
@@ -71,7 +66,6 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftShift))
         {
- 
             isRunning = true;
         }
         else
@@ -84,14 +78,12 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     {
         var targetVelocity = direction * speed * Time.fixedDeltaTime;
 
-
         if(isRunning)
         {
             targetVelocity *= runningMuliplicator;
         }
 
         rb.velocity = targetVelocity;
-
 
         if (new Vector3(direction.x, 0, direction.z) != Vector3.zero)
         {
@@ -105,9 +97,7 @@ public class PlayerRigidbodyMovement : MonoBehaviour
 
     private void Jump()
     {
-
         rb.AddForce(new Vector3(0, jumpForce, 0),ForceMode.Impulse);
-   
     }
     private void BeterJump()
     {
@@ -120,7 +110,6 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     private void CheckIsGrounded()
     {
         int layermask = 0 << 12;
-
 
         RaycastHit hit;
      
