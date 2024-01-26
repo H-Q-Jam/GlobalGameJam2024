@@ -9,9 +9,6 @@ using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-
-
-
 public class NetworkRunnerHandler : MonoBehaviour
 {
     public NetworkRunner networkRunnerPrefab;
@@ -45,9 +42,10 @@ public class NetworkRunnerHandler : MonoBehaviour
             GameMode = gameMode,
             Address = adress,
             SessionName = "TestRoom",
+            Initialized = initialized,
             SceneManager = sceneManager
 
-        }); ;
+        }); 
     }
 
 }
