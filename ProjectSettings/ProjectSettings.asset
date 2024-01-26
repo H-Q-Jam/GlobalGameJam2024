@@ -675,8 +675,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: H&Q_GlobalGameJam2024
-  metroPackageVersion: 
+  metroPackageName: HQGlobalGameJam2024
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -684,7 +684,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: H&Q_GlobalGameJam2024
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: H&Q_GlobalGameJam2024
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
