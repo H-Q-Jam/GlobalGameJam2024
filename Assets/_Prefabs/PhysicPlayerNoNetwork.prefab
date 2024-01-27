@@ -546,8 +546,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.3327969
-  m_Center: {x: 0.11480535, y: 0.00000001937475, z: 0.21799082}
+  m_Radius: 0.29198545
+  m_Center: {x: 0.11480511, y: 0.040811565, z: 0.21799076}
 --- !u!54 &2529965105503016547
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -594,18 +594,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -40
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 25
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 25
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -912,7 +912,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 20
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1097,18 +1097,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 20
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 10
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1188,11 +1188,11 @@ CharacterJoint:
   m_Swing1Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_Swing2Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_EnableProjection: 1
   m_ProjectionDistance: 0
   m_ProjectionAngle: 90
@@ -1392,7 +1392,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 20
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1468,11 +1468,11 @@ CharacterJoint:
   m_Swing1Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_Swing2Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_EnableProjection: 1
   m_ProjectionDistance: 0
   m_ProjectionAngle: 90
