@@ -7,12 +7,47 @@ using System;
 public class PlayerRigidbodyMovement : MonoBehaviour
 {
 
+    [SerializeField] private PlayerGrab pg;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private LayerMask layerGround;
+    
     public float speed = 60f;
+    
+    public float Speed
+    {
+        get
+        {
+            float newSpeed = speed;
+            if (pg != null)
+            {
+                if (pg.fournitureInHand != null)
+                {
+                    newSpeed = speed * Mathf.Clamp(50 / pg.fournitureInHand.Rb.mass, 0.5f, 1);
+                }
+            }
+            return newSpeed;
+        }
+    }
+
     public float jumpForce = 50f;
-    [SerializeField] private float jumpHeightMax = 2f;
     [SerializeField] private float maxVelocity = 100f;
     [SerializeField] private float rotationSpeed = 100f;
+    public float RotationSpeed
+    {
+        get
+        {
+            float newRotationSpeed = rotationSpeed;
+            if (pg != null)
+            {
+                if (pg.fournitureInHand != null)
+                {
+                    newRotationSpeed = rotationSpeed * Mathf.Clamp(10 / pg.fournitureInHand.Rb.mass, 0.1f, 1);
+                }
+            }
+            return newRotationSpeed;
+        }
+    }
+
     [SerializeField] private float runningMuliplicator;
     [SerializeField] private bool isRunning = false;
 
@@ -58,7 +93,7 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        direction = new Vector3(x, rb.velocity.y, z);
+        direction = new Vector3(x, 0, z);
     }
 
 
@@ -76,20 +111,20 @@ public class PlayerRigidbodyMovement : MonoBehaviour
 
     private void Move()
     {
-        var targetVelocity = direction * speed * Time.fixedDeltaTime;
+        var targetVelocity = direction * Speed * Time.fixedDeltaTime;
 
         if(isRunning)
         {
             targetVelocity *= runningMuliplicator;
         }
 
-        rb.velocity = targetVelocity;
+        rb.velocity = new Vector3(targetVelocity.x,rb.velocity.y,targetVelocity.z);
 
         if (new Vector3(direction.x, 0, direction.z) != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z), Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, RotationSpeed * Time.fixedDeltaTime);
         }
 
     }
@@ -103,17 +138,14 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     {
         if(rb.velocity.y < -2f)
         {
-            rb.velocity -= vecGravity * fallMultiplier * Time.fixedDeltaTime;
+            Vector3 accel = vecGravity * fallMultiplier * Time.fixedDeltaTime;
+            rb.velocity += accel;
         }
     }
 
     private void CheckIsGrounded()
-    {
-        int layermask = 0 << 12;
-
-        RaycastHit hit;
-     
-        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out hit, groundDistance))
+    { 
+        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out RaycastHit hit, groundDistance,layerGround))
         {
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundDistance, Color.green);
             isGrounded = true;

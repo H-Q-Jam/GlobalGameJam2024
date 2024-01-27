@@ -4,8 +4,8 @@ using UnityEngine;
 
 public partial class MotManager : MonoBehaviour
 {
-    [SerializeField] private Mot equipe1;
-    [SerializeField] private Mot equipe2;
+    [SerializeField, ReadOnly] private Mot equipe1;
+    [SerializeField, ReadOnly] private Mot equipe2;
 
     //ReadOnly dans MotManager_Editor
     [SerializeField] private List<Mot> mots = new ();
@@ -14,8 +14,8 @@ public partial class MotManager : MonoBehaviour
     //ReadOnly dans MotManager_Editor
     [SerializeField] private List<Zone> zones = new ();
 
-    private readonly Dictionary<Zone, Lettre> zonesToLettre = new ();
-    private readonly Dictionary<Lettre, Mot> lettreToMot = new ();
+    private static readonly Dictionary<Zone, Lettre> zonesToLettre = new ();
+    private static readonly Dictionary<Lettre, Mot> lettreToMot = new ();
 
     private void Awake()
     {
@@ -26,10 +26,10 @@ public partial class MotManager : MonoBehaviour
             mots.Add(newMot);
             switch (newMot.Equipe)
             {
-                case 1:
+                case TeamWhoCanGrab.Equipe1:
                     equipe1 = newMot;
                     break;
-                case 2:
+                case TeamWhoCanGrab.Equipe2:
                     equipe2 = newMot;
                     break;
             }
@@ -46,12 +46,21 @@ public partial class MotManager : MonoBehaviour
         }
     }
 
-    public bool GetLettreFromZone(Zone zone, out Lettre lettre)
+    public static bool GetLettreFromZone(Zone zone, out Lettre lettre)
     {
         return zonesToLettre.TryGetValue(zone, out lettre);
     }
-    public bool GetMotFromLettre(Lettre lettre, out Mot mot)
+    public static bool GetMotFromLettre(Lettre lettre, out Mot mot)
     {
         return lettreToMot.TryGetValue(lettre, out mot);
+    }
+    public static bool GetMotFromZone(Zone zone, out Mot mot)
+    {
+        mot = null;
+        if (GetLettreFromZone(zone, out Lettre lettre))
+        {
+            return GetMotFromLettre(lettre, out mot);
+        }
+        return false;
     }
 }
