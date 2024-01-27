@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FournitureManager : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class FournitureManager : MonoBehaviour
 
     [SerializeField, ReadOnly] private Rigidbody rb;
     public Rigidbody Rb=> rb;
-    [SerializeField] private ConfigurableJoint joint;
+    [SerializeField] private ConfigurableJoint rightJoint;
+    [SerializeField] private ConfigurableJoint leftJoint;
 
     [SerializeField] private LayerMask layerCollision;
     [SerializeField] private LayerMask layerGrabed;
@@ -34,21 +36,25 @@ public class FournitureManager : MonoBehaviour
         ResetWhoCanGrab();
     }
 
-    public bool isJointed => joint.connectedBody != null;
-    public void LinkJoint(Rigidbody rightHand)
+    public bool isJointed => rightJoint.connectedBody != null && leftJoint.connectedBody != null;
+    public void LinkJoint(Rigidbody rightHand, Rigidbody leftHand)
     {
-        joint.gameObject.SetActive(true);
+        rightJoint.gameObject.SetActive(true);
+        leftJoint.gameObject.SetActive(true);
         gameObject.layer = (int)Mathf.Log(layerGrabed, 2);
-        joint.connectedBody = rightHand;
+        rightJoint.connectedBody = rightHand;
+        leftJoint.connectedBody = leftHand;
     }
     
-    public void UnlinkJoint(Rigidbody rightHand)
+    public void UnlinkJoint(Rigidbody rightHand, Rigidbody leftHand)
     {
-        if ( joint.connectedBody == rightHand)
+        if ( rightJoint.connectedBody == rightHand)
         {
             gameObject.layer = (int)Mathf.Log(layerCollision, 2);
-            joint.connectedBody = null;
-            joint.gameObject.SetActive(false);
+            rightJoint.connectedBody = null;
+            rightJoint.gameObject.SetActive(false);
+            leftJoint.connectedBody = null;
+            leftJoint.gameObject.SetActive(false);
         }
     }
 

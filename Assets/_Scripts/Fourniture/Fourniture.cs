@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Fourniture : MonoBehaviour, IInteractable
 {
-    [SerializeField, ReadOnly] protected FournitureManager fournitureManager;
+    [SerializeField, ReadOnly] public FournitureManager fournitureManager;
     
     [SerializeField, ReadOnly] public bool onZone;
 
@@ -16,13 +16,13 @@ public class Fourniture : MonoBehaviour, IInteractable
         if (fournitureManager.isJointed)
         {
             playerGrab.fournitureInHand = null;
-            fournitureManager.UnlinkJoint(playerGrab._rightHand);
+            fournitureManager.UnlinkJoint(playerGrab._rightHand, playerGrab._leftHand);
             return null;
         }
         else
         {
             playerGrab.fournitureInHand = fournitureManager;
-            fournitureManager.LinkJoint(playerGrab._rightHand);
+            fournitureManager.LinkJoint(playerGrab._rightHand, playerGrab._leftHand);
             return this;
         }
     }

@@ -7,7 +7,12 @@ public class PlayerGrab : MonoBehaviour
 {
     [SerializeField] private GrabHand _grabHand;
     [SerializeField] public Rigidbody _rightHand;
+    [SerializeField] public Rigidbody _leftHand;
     [SerializeField] public FournitureManager fournitureInHand;
+    
+    
+    [SerializeField] private CharacterJoint upperArmR;
+    [SerializeField] private CharacterJoint upperArmL;
     
     // Update is called once per frame
     void Update()
@@ -27,6 +32,15 @@ public class PlayerGrab : MonoBehaviour
             else if (_grabHand._interactableDetected != null)
             {
                 _grabHand._interactableGrab = _grabHand._interactableDetected.Interact(this);
+            }
+
+            if (_grabHand._interactableGrab != null)
+            {
+                Fourniture fourniture = _grabHand._interactableGrab as Fourniture;
+                if (fourniture != null)
+                {
+                    
+                }
             }
         }
     }
