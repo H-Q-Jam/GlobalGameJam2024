@@ -16,4 +16,15 @@ public class GrabHand : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out IInteractable interactable))
+        {
+            if ( _interactable == interactable)
+            {
+                _interactable = null;
+            }
+        }
+    }
 }

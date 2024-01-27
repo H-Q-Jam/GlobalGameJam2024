@@ -9,6 +9,8 @@ public class PlayerRigidbodyMovement : MonoBehaviour
 
     [SerializeField] private PlayerGrab pg;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private LayerMask layerGround;
+    
     public float speed = 60f;
     
     public float Speed
@@ -147,7 +149,7 @@ public class PlayerRigidbodyMovement : MonoBehaviour
 
         RaycastHit hit;
      
-        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out hit, groundDistance))
+        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out hit, groundDistance,layerGround))
         {
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundDistance, Color.green);
             isGrounded = true;
