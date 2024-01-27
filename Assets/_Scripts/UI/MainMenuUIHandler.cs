@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class UI_Menu_Manager : MonoBehaviour
+public class MainMenuUIHandler : MonoBehaviour
 {
 
     [SerializeField] private LevelManager levelManager;
@@ -26,8 +26,11 @@ public class UI_Menu_Manager : MonoBehaviour
     [SerializeField] private GameObject panel_InGame;
     [SerializeField] private GameObject panel_ScoreEnd;
     [SerializeField] private GameObject panel_InProgress;
+    [SerializeField] private GameObject panel_PlayerName;
 
     [SerializeField] private TMP_InputField gameSessionID;
+
+    public TMP_InputField playerName;
 
     private void Awake()
     {
@@ -38,9 +41,28 @@ public class UI_Menu_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(PlayerPrefs.HasKey("PlayerNickname"))
+        {
+            playerName.text = PlayerPrefs.GetString("PlayerNickname");
+        }
+
     }
     
+    public void OnEnterPlayerNameClicked()
+    {
+        PlayerPrefs.SetString("PlayerNickname", playerName.text);
+        PlayerPrefs.Save();
+
+        panel_PlayerName.SetActive(false);
+        panel_Menu.SetActive(true);
+
+        ////////
+        SceneManager.LoadScene("Lobby");
+    }
+
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -49,7 +71,8 @@ public class UI_Menu_Manager : MonoBehaviour
 
     public void UI_StartSetup()
     {
-        panel_Menu.SetActive(true);
+        panel_PlayerName.SetActive(true);
+        panel_Menu.SetActive(false);
         panel_Option.SetActive(false);
         header.SetActive(false);
         panel_Play.SetActive(false);
@@ -68,6 +91,7 @@ public class UI_Menu_Manager : MonoBehaviour
     {
         Debug.Log("Host");
         SetGameMode(GameMode.Host);
+
 
     }
     public void OnJoinGame()
@@ -94,6 +118,19 @@ public class UI_Menu_Manager : MonoBehaviour
     public void OnEnterGame()
     {
         Debug.Log(gameSessionID.text);
+
+        if(gameMode == GameMode.Host)
+        {
+
+            SceneManager.LoadScene("Lobby");
+        }
+
+        if(gameMode == GameMode.Client) 
+        {
+            
+        }
+
+
         gameSessionID.text = "";
        // StartGame(gameMode,)
         BackToMenu();

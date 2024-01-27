@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 using Fusion.Sockets;
-using UnityEditor.SceneManagement;
+
 using System.Threading.Tasks;
 using System;
 using System.Linq;
