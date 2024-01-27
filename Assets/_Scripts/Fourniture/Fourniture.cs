@@ -11,9 +11,18 @@ public class Fourniture : MonoBehaviour, IInteractable
 
     TeamWhoCanGrab IInteractable.WhoCanGrab() => fournitureManager.WhoCanGrab;
     
-    void IInteractable.Interact()
+    void IInteractable.Interact(PlayerGrab playerGrab)
     {
-        
+        if (fournitureManager.isJointed)
+        {
+            playerGrab.fournitureInHand = null;
+            fournitureManager.UnlinkJoint(playerGrab._rightHand);
+        }
+        else
+        {
+            playerGrab.fournitureInHand = fournitureManager;
+            fournitureManager.LinkJoint(playerGrab._rightHand);
+        }
     }
 
     void IInteractable.ChangeWhoCanGrab(TeamWhoCanGrab whoCanGrab)

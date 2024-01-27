@@ -13,12 +13,41 @@ public class FournitureManager : MonoBehaviour
     [SerializeField] protected Color valideColor;
     [SerializeField, ReadOnly] protected MeshRenderer meshRenderer;
     [SerializeField, ReadOnly] protected Material material;
+
+    [SerializeField, ReadOnly] private Rigidbody rb;
+    public Rigidbody Rb=> rb;
+    [SerializeField] private ConfigurableJoint joint;
     
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.mass = poids;
+        }
         SetMeshRenderer();
-
         ResetWhoCanGrab();
+    }
+
+    public bool isJointed => joint.connectedBody != null;
+    public void LinkJoint(Rigidbody rightHand)
+    {
+        
+        joint.xMotion = ConfigurableJointMotion.Limited;
+        joint.yMotion = ConfigurableJointMotion.Limited;
+        joint.zMotion = ConfigurableJointMotion.Limited;
+        joint.connectedBody = rightHand;
+    }
+    
+    public void UnlinkJoint(Rigidbody rightHand)
+    {
+        if ( joint.connectedBody == rightHand)
+        {
+            joint.connectedBody = null;
+            joint.xMotion = ConfigurableJointMotion.Free;
+            joint.yMotion = ConfigurableJointMotion.Free;
+            joint.zMotion = ConfigurableJointMotion.Free;
+        }
     }
 
     private void SetMeshRenderer()
