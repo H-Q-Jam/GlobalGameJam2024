@@ -4,8 +4,8 @@ public partial class Zone : MonoBehaviour
 {
     [SerializeField] protected Color normalColor;
     [SerializeField] protected Color valideColor;
-    [SerializeField, ReadOnly] protected MeshRenderer meshRenderer;
-    [SerializeField, ReadOnly] protected Material material;
+    [SerializeField] protected MeshRenderer meshRenderer;
+    [SerializeField] protected Material material;
     
     public void ChangeColor(bool isValid)
     {

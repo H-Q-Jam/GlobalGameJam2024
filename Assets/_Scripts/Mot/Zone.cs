@@ -6,8 +6,8 @@ using UnityEngine.Serialization;
 [Serializable]
 public partial class Zone : MonoBehaviour
 {
-    [FormerlySerializedAs("_interactable")] [SerializeField, ReadOnly] private Fourniture _fourniture;
-    [SerializeField, ReadOnly] private Collider _collider;
+    [SerializeField] private Fourniture _fourniture;
+    [SerializeField] private Collider _collider;
 
     public event Action OnOccupied; 
     public event Action OnUnoccupied; 

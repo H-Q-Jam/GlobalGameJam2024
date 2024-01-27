@@ -6,9 +6,9 @@ using UnityEngine;
 public class Mot : MonoBehaviour
 {
     [SerializeField] private TeamWhoCanGrab equipe;
-    [SerializeField, ReadOnly] private List<Lettre> _lettres;
+    [SerializeField] private List<Lettre> _lettres;
     
-    [SerializeField, ReadOnly] private bool isComplete;
+    [SerializeField] private bool isComplete;
     public event Action OnMotComplete;
     public event Action OnMotUncomplete;
 
@@ -32,7 +32,7 @@ public class Mot : MonoBehaviour
             lettre.OnLetterUncomplete -= LetterUnCompleted;
         }
     }
-    [SerializeField, ReadOnly] private int nbLetterCompleted = 0;
+    [SerializeField] private int nbLetterCompleted = 0;
     private void LetterCompleted()
     {
         nbLetterCompleted = Mathf.Clamp(nbLetterCompleted+1,0,_lettres.Count);

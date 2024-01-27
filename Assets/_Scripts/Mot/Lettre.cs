@@ -9,8 +9,8 @@ public class Lettre : MonoBehaviour
     public event Action OnLetterComplete;
     public event Action OnLetterUncomplete;
     
-    [SerializeField, ReadOnly] private List<Zone> _zones;
-    [SerializeField, ReadOnly] private bool isComplete;
+    [SerializeField] private List<Zone> _zones;
+    [SerializeField] private bool isComplete;
 
     public List<Zone> Zones => _zones;
 
@@ -32,7 +32,7 @@ public class Lettre : MonoBehaviour
         }
     }
 
-    [SerializeField, ReadOnly] private int nbZoneOccupied = 0;
+    [SerializeField] private int nbZoneOccupied = 0;
     
     private void ZoneOccupied()
     {

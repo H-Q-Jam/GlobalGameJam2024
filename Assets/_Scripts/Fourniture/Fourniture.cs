@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class Fourniture : MonoBehaviour, IInteractable
 {
-    [SerializeField, ReadOnly] public FournitureManager fournitureManager;
+    [SerializeField] public FournitureManager fournitureManager;
     
-    [SerializeField, ReadOnly] public bool onZone;
+    [SerializeField] public bool onZone;
 
     public IInteractable interactable => this;
 

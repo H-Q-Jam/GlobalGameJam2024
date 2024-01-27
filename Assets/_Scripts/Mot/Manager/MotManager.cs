@@ -4,8 +4,8 @@ using UnityEngine;
 
 public partial class MotManager : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private Mot equipe1;
-    [SerializeField, ReadOnly] private Mot equipe2;
+    [SerializeField] private Mot equipe1;
+    [SerializeField] private Mot equipe2;
 
     //ReadOnly dans MotManager_Editor
     [SerializeField] private List<Mot> mots = new ();

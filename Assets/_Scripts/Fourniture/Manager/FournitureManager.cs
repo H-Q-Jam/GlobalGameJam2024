@@ -7,15 +7,15 @@ public class FournitureManager : MonoBehaviour
     [SerializeField] protected string nom;
     [SerializeField] protected float poids;
     [SerializeField] protected int taille;
-    [SerializeField, ReadOnly] protected TeamWhoCanGrab _whoCanGrab;
+    [SerializeField] protected TeamWhoCanGrab _whoCanGrab;
     public TeamWhoCanGrab WhoCanGrab => _whoCanGrab;
     
     [SerializeField] protected Color normalColor;
     [SerializeField] protected Color valideColor;
-    [SerializeField, ReadOnly] protected MeshRenderer meshRenderer;
-    [SerializeField, ReadOnly] protected Material material;
+    [SerializeField] protected MeshRenderer meshRenderer;
+    [SerializeField] protected Material material;
 
-    [SerializeField, ReadOnly] private Rigidbody rb;
+    [SerializeField] private Rigidbody rb;
     public Rigidbody Rb=> rb;
     [SerializeField] private ConfigurableJoint rightJoint;
     [SerializeField] private ConfigurableJoint leftJoint;
