@@ -48,7 +48,7 @@ public class FournitureManager : MonoBehaviour
     
     public void UnlinkJoint(Rigidbody rightHand, Rigidbody leftHand)
     {
-        if ( rightJoint.connectedBody == rightHand)
+        if ( rightJoint.connectedBody == rightHand || leftJoint.connectedBody == leftHand)
         {
             gameObject.layer = (int)Mathf.Log(layerCollision, 2);
             rightJoint.connectedBody = null;
