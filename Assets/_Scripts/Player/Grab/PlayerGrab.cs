@@ -20,9 +20,13 @@ public class PlayerGrab : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("Grab");
-            if (_grabHand._interactable != null)
+            if (_grabHand._interactableGrab != null)
             {
-                _grabHand._interactable.Interact(this);
+                _grabHand._interactableGrab = _grabHand._interactableGrab.Interact(this);
+            }
+            else if (_grabHand._interactableDetected != null)
+            {
+                _grabHand._interactableGrab = _grabHand._interactableDetected.Interact(this);
             }
         }
     }

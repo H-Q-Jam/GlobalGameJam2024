@@ -37,10 +37,8 @@ public class FournitureManager : MonoBehaviour
     public bool isJointed => joint.connectedBody != null;
     public void LinkJoint(Rigidbody rightHand)
     {
+        joint.gameObject.SetActive(true);
         gameObject.layer = (int)Mathf.Log(layerGrabed, 2);
-        joint.xMotion = ConfigurableJointMotion.Limited;
-        joint.yMotion = ConfigurableJointMotion.Limited;
-        joint.zMotion = ConfigurableJointMotion.Limited;
         joint.connectedBody = rightHand;
     }
     
@@ -50,9 +48,7 @@ public class FournitureManager : MonoBehaviour
         {
             gameObject.layer = (int)Mathf.Log(layerCollision, 2);
             joint.connectedBody = null;
-            joint.xMotion = ConfigurableJointMotion.Free;
-            joint.yMotion = ConfigurableJointMotion.Free;
-            joint.zMotion = ConfigurableJointMotion.Free;
+            joint.gameObject.SetActive(false);
         }
     }
 

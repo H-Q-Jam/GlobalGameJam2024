@@ -41,7 +41,7 @@ public class PlayerRigidbodyMovement : MonoBehaviour
             {
                 if (pg.fournitureInHand != null)
                 {
-                    newRotationSpeed = rotationSpeed * Mathf.Clamp(100 / pg.fournitureInHand.Rb.mass, 0.75f, 1);
+                    newRotationSpeed = rotationSpeed * Mathf.Clamp(10 / pg.fournitureInHand.Rb.mass, 0.1f, 1);
                 }
             }
             return newRotationSpeed;
@@ -144,12 +144,8 @@ public class PlayerRigidbodyMovement : MonoBehaviour
     }
 
     private void CheckIsGrounded()
-    {
-        int layermask = 0 << 12;
-
-        RaycastHit hit;
-     
-        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out hit, groundDistance,layerGround))
+    { 
+        if(Physics.Raycast(transform.position, new Vector3 (0,-1,0), out RaycastHit hit, groundDistance,layerGround))
         {
             Debug.DrawRay(transform.position, new Vector3(0, -1, 0) * groundDistance, Color.green);
             isGrounded = true;

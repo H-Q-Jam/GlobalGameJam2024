@@ -4,7 +4,8 @@ using UnityEngine;
 public class GrabHand : MonoBehaviour
 {
     [SerializeField] private TeamWhoCanGrab _whoCanGrab;
-    public IInteractable _interactable;
+    public IInteractable _interactableGrab;
+    public IInteractable _interactableDetected;
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out IInteractable interactable))
@@ -12,7 +13,7 @@ public class GrabHand : MonoBehaviour
             if ( (interactable.WhoCanGrab() & _whoCanGrab) != 0)
             {
                 Debug.Log("can grab");
-                _interactable = interactable;
+                _interactableDetected = interactable;
             }
         }
     }
@@ -21,9 +22,9 @@ public class GrabHand : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable interactable))
         {
-            if ( _interactable == interactable)
+            if ( _interactableDetected == interactable)
             {
-                _interactable = null;
+                _interactableDetected = null;
             }
         }
     }

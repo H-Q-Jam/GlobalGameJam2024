@@ -3,7 +3,7 @@ using System;
 public interface IInteractable
 {
     public TeamWhoCanGrab WhoCanGrab();
-    public void Interact(PlayerGrab playerGrab);
+    public IInteractable Interact(PlayerGrab playerGrab);
 
     public void ChangeWhoCanGrab(TeamWhoCanGrab whoCanGrab);
 }
