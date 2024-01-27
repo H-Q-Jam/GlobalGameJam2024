@@ -912,7 +912,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 20
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1097,18 +1097,18 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 20
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 10
+    limit: 0
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
@@ -1188,11 +1188,11 @@ CharacterJoint:
   m_Swing1Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_Swing2Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_EnableProjection: 1
   m_ProjectionDistance: 0
   m_ProjectionAngle: 90
@@ -1392,7 +1392,7 @@ CharacterJoint:
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 0
+    limit: 20
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1468,11 +1468,11 @@ CharacterJoint:
   m_Swing1Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_Swing2Limit:
     limit: 20
     bounciness: 0
-    contactDistance: 10
+    contactDistance: 0
   m_EnableProjection: 1
   m_ProjectionDistance: 0
   m_ProjectionAngle: 90

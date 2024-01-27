@@ -1,16 +1,25 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float matchDelay;
+    [SerializeField] float timeRunning;
+    [SerializeField] TMP_Text timeText;
+    private void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (timeRunning < matchDelay)
+        {
+            timeRunning += Time.fixedDeltaTime;
+            int seconde = Mathf.FloorToInt(timeRunning % 60);
+            int minute = Mathf.FloorToInt((timeRunning - seconde) / 60);
+            
+            timeText.text = (minute < 10 ? "0" : "") + minute + " : " + (seconde < 10 ? "0" : "") + seconde;
+        }
+        if (timeRunning >= matchDelay)
+        {
+            Debug.Log("End");
+        }
     }
 }
