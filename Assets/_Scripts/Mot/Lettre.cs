@@ -10,7 +10,7 @@ public class Lettre : MonoBehaviour
     public event Action OnLetterUncomplete;
     
     [SerializeField] private List<Zone> _zones;
-    [SerializeField] private bool isComplete;
+    [SerializeField] public bool isComplete;
 
     public List<Zone> Zones => _zones;
 
