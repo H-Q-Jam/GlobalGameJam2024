@@ -131,6 +131,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1962500255976412565, guid: 2c96a43c09a52a94ca8d6b69a72a0d14, type: 3}
+      propertyPath: Flags
+      value: 133633
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962500255976412565, guid: 2c96a43c09a52a94ca8d6b69a72a0d14, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: 8092167084718952023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962500255976412565, guid: 2c96a43c09a52a94ca8d6b69a72a0d14, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: 14611355615069881
+      objectReference: {fileID: 0}
     - target: {fileID: 2929632263769267263, guid: 2c96a43c09a52a94ca8d6b69a72a0d14, type: 3}
       propertyPath: Flags
       value: 133633
@@ -1147,7 +1159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1322482271
 Transform:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public class CharacterInputHandler : MonoBehaviour
 {
     Vector2 moveInputVector = Vector2.zero;
 
+    int jump = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,14 @@ public class CharacterInputHandler : MonoBehaviour
         moveInputVector.x = Input.GetAxis("Horizontal");
         moveInputVector.y = Input.GetAxis("Vertical");
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump = 1;
+        }
+        else
+        {
+            jump = 0;
+        }
     }
 
     /// <summary>

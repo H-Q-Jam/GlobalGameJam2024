@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
 
-public class CharacterMouvementHandler : NetworkBehaviour
+public class CharacterMouvementHandler2 : NetworkBehaviour
 {
-    NetworkCharacterControllerPrototypeCustom networkCharacterControllerPrototypeCustom;
+    PlayerRigidbodyMovementNetwork playerRigidbodyMovementNetwork;
 
 
 
 
     private void Awake()
     {
-        networkCharacterControllerPrototypeCustom = GetComponent<NetworkCharacterControllerPrototypeCustom>();
+        playerRigidbodyMovementNetwork = GetComponent<PlayerRigidbodyMovementNetwork>();
     }
 
     // Start is called before the first frame update
@@ -41,11 +41,14 @@ public class CharacterMouvementHandler : NetworkBehaviour
         if(GetInput(out NetworkInputData networkInputData))
         {
             //Move
-            Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
+            //Vector3 moveDirection = transform.forward * networkInputData.movementInput.y + transform.right * networkInputData.movementInput.x;
+
+            Vector3 moveDirection = new Vector3(networkInputData.movementInput.x, 0, networkInputData.movementInput.y) ;
+            
+            
             moveDirection.Normalize();
 
-            networkCharacterControllerPrototypeCustom.Move(moveDirection);
-
+            playerRigidbodyMovementNetwork.Move(moveDirection);
         }
     }
 }
