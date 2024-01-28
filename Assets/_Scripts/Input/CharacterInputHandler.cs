@@ -32,10 +32,18 @@ public class CharacterInputHandler : MonoBehaviour
         {
             jump = 0;
         }
-        isJumpPressed = Input.GetKeyDown(KeyCode.Space);
 
 
-        print(isJumpPressed);
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumpPressed = true;
+        }
+
+
+
+
+    
         isGrabPressed = Input.GetKeyDown(KeyCode.E);
     }
 
@@ -50,7 +58,12 @@ public class CharacterInputHandler : MonoBehaviour
         networkInputData.movementInput = moveInputVector;
 
         networkInputData.isJumpPressed = isJumpPressed;
+
         networkInputData.isGrabPressed = isGrabPressed;
+
+
+
+        isJumpPressed = false;
 
         return networkInputData;
     }

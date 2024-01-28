@@ -10399,7 +10399,7 @@ MonoBehaviour:
   isRunning: 0
   fallMultiplier: 1.2
   isGrounded: 1
-  groundDistance: 0.2
+  groundDistance: 1.1
   direction: {x: 0, y: 0, z: 0}
 --- !u!114 &8917362758854686389
 MonoBehaviour:
