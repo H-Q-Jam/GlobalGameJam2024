@@ -8,7 +8,7 @@ public class Mot : MonoBehaviour
     [SerializeField] private TeamWhoCanGrab equipe;
     [SerializeField] private List<Lettre> _lettres;
     
-    [SerializeField] private bool isComplete;
+    [SerializeField] public bool isComplete;
     public event Action OnMotComplete;
     public event Action OnMotUncomplete;
 

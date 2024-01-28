@@ -13,6 +13,7 @@ public partial class Zone : MonoBehaviour
     public event Action OnUnoccupied; 
 
     public IInteractable Interactable => _fourniture;
+    public bool isOccupied => Interactable != null;
 
     private void Awake()
     {

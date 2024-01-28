@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class MotManager : MonoBehaviour
+public class MotManager : MonoBehaviour
 {
-    [SerializeField] private Mot equipe1;
-    [SerializeField] private Mot equipe2;
+    public static Mot equipe1;
+    public static Mot equipe2;
 
     //ReadOnly dans MotManager_Editor
     [SerializeField] private List<Mot> mots = new ();
