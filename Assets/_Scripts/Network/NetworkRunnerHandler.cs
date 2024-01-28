@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class NetworkRunnerHandler : MonoBehaviour
 {
@@ -12,19 +13,27 @@ public class NetworkRunnerHandler : MonoBehaviour
 
     NetworkRunner networkRunner;//reference du networkRunnerPrefab
 
-
+    MainMenuUIHandler mainMenuUIHandler;
     // Start is called before the first frame update
     void Start()
     {
+        mainMenuUIHandler = FindAnyObjectByType<MainMenuUIHandler>();
+
+
+
         networkRunner = Instantiate(networkRunnerPrefab);
         networkRunner.name = "Network runner";
 
-        var clientTask = InitializeNetworkRunner(networkRunner, GameMode.AutoHostOrClient, NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
+        var clientTask = InitializeNetworkRunner(networkRunner, mainMenuUIHandler.gameMode, mainMenuUIHandler.gameSessionID.text.ToString(), NetAddress.Any(), SceneManager.GetActiveScene().buildIndex, null);
 
         Debug.Log($"Server NetworkRunner started");
     }
 
-    protected virtual Task InitializeNetworkRunner(NetworkRunner runner,GameMode gameMode, NetAddress adress, SceneRef sceneRef, Action<NetworkRunner> initialized)
+
+
+
+
+    protected virtual Task InitializeNetworkRunner(NetworkRunner runner,GameMode gameMode, String roomName, NetAddress adress, SceneRef sceneRef, Action<NetworkRunner> initialized)
     {
         var sceneManager = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
 
@@ -42,7 +51,7 @@ public class NetworkRunnerHandler : MonoBehaviour
         {
             GameMode = gameMode,
             Address = adress,
-            SessionName = "TestRoom",
+            SessionName = roomName,
             Initialized = initialized,
             SceneManager = sceneManager
 

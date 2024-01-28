@@ -13,8 +13,9 @@ public class MainMenuUIHandler : MonoBehaviour
 {
 
     [SerializeField] private LevelManager levelManager;
-    private GameMode gameMode;
+    public GameMode gameMode;
 
+    public String room;
 
     //panel pour la gestion de l'ui
 
@@ -28,7 +29,7 @@ public class MainMenuUIHandler : MonoBehaviour
     [SerializeField] private GameObject panel_InProgress;
     [SerializeField] private GameObject panel_PlayerName;
 
-    [SerializeField] private TMP_InputField gameSessionID;
+    [SerializeField] public TMP_InputField gameSessionID;
 
     public TMP_InputField playerName;
 
@@ -45,7 +46,8 @@ public class MainMenuUIHandler : MonoBehaviour
         {
             playerName.text = PlayerPrefs.GetString("PlayerNickname");
         }
-
+        gameSessionID.text = "";
+        
     }
     
     public void OnEnterPlayerNameClicked()
@@ -56,8 +58,8 @@ public class MainMenuUIHandler : MonoBehaviour
         panel_PlayerName.SetActive(false);
         panel_Menu.SetActive(true);
 
-        ////////
-        SceneManager.LoadScene("Lobby");
+       
+        
     }
 
 
@@ -122,18 +124,21 @@ public class MainMenuUIHandler : MonoBehaviour
         if(gameMode == GameMode.Host)
         {
 
-            SceneManager.LoadScene("Lobby");
+            SceneManager.LoadScene("Lobby", LoadSceneMode.Additive);
         }
 
         if(gameMode == GameMode.Client) 
         {
-            
+            SceneManager.LoadScene("Lobby", LoadSceneMode.Additive);
         }
 
 
-        gameSessionID.text = "";
-       // StartGame(gameMode,)
-        BackToMenu();
+        TurnOffUI();
+
+
+
+
+
     }
 
     private void SetGameMode(GameMode gamemode)
@@ -154,12 +159,24 @@ public class MainMenuUIHandler : MonoBehaviour
 
     public void BackToMenu()
     {
-        gameSessionID.text = "";
+        
         panel_Menu.SetActive(true);
         panel_Option.SetActive(false);
         panel_Play.SetActive(false);
         header.SetActive(false);
+        gameSessionID.text = "";
+    }
 
+    public void TurnOffUI()
+    {
+        panel_PlayerName.SetActive(false);
+        panel_Menu.SetActive(false);
+        panel_Option.SetActive(false);
+        header.SetActive(false);
+        panel_Play.SetActive(false);
+        panel_InGame.SetActive(true);
+        panel_ScoreEnd.SetActive(false);
+        panel_InProgress.SetActive(false);
     }
 
 }
