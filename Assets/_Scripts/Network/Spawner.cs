@@ -13,6 +13,8 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
     private Dictionary<PlayerRef, NetworkObject> spawnedPlayer = new Dictionary<PlayerRef, NetworkObject>();
 
     CharacterInputHandler characterInputHandler; // local player
+
+    public static event Action<NetworkRunner> OnServerReady;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks
             Debug.Log("OnPlayerJoined we are the server. Spawning Player");
             NetworkObject np = runner.Spawn(playerPrefab, Utils.GetRandomSpawnPoint(), Quaternion.identity, player).gameObject.GetComponent<NetworkObject>();
             spawnedPlayer.Add(player, np);
+            OnServerReady?.Invoke(runner);
         }
         else
         {
