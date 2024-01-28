@@ -27,9 +27,13 @@ public class NetworkRunnerHandler : MonoBehaviour
     protected virtual Task InitializeNetworkRunner(NetworkRunner runner,GameMode gameMode, NetAddress adress, SceneRef sceneRef, Action<NetworkRunner> initialized)
     {
         var sceneManager = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
+
+
         if (sceneManager != null)
         {
             sceneManager = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();
+     
+            gameObject.AddComponent<NetworkPhysicsSimulation3D>();
         }
 
         runner.ProvideInput = true;

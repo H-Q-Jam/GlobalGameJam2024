@@ -68,8 +68,9 @@ public class PlayerRigidbodyMovementNetwork : NetworkBehaviour
 
     private void Update()
     {
-        GetIsRunning();
 
+
+        /*
         //jump here, in the fixedUpdate it doesn't works everytime
         CheckIsGrounded();
         if (isGrounded)
@@ -79,7 +80,12 @@ public class PlayerRigidbodyMovementNetwork : NetworkBehaviour
                 Jump();
             }
         }
-        else BeterJump();
+        */
+
+        GetIsRunning();
+        //else 
+        CheckIsGrounded();
+           if (!isGrounded) BeterJump();
     }
 
 
@@ -130,9 +136,14 @@ public class PlayerRigidbodyMovementNetwork : NetworkBehaviour
     }
 
 
-    private void Jump()
+    public void Jump()
     {
-        rb.AddForce(new Vector3(0, jumpForce, 0),ForceMode.Impulse);
+        print("jump");
+        CheckIsGrounded();
+        if (isGrounded)
+        {
+            rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
+        }
     }
     private void BeterJump()
     {

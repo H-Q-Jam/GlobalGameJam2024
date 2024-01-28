@@ -17,12 +17,12 @@ public class PlayerGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleGrabInput();
+       // HandleGrabInput();
     }
 
     private bool GrabOrUnGrab;
     private bool test;
-    private void HandleGrabInput()
+    public void HandleGrabInput()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {

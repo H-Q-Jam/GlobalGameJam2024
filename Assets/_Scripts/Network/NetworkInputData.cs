@@ -9,5 +9,7 @@ public struct NetworkInputData : INetworkInput
 
     public float rotationInput;
 
-    public NetworkBool isJumpPressed;
+    public bool isJumpPressed;
+
+    public bool isGrabPressed;
 }
