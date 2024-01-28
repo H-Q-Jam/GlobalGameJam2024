@@ -6,6 +6,9 @@ public class CharacterInputHandler : MonoBehaviour
 {
     Vector2 moveInputVector = Vector2.zero;
 
+    bool isJumpPressed;
+    bool isGrabPressed;
+
     int jump = 0;
 
     // Start is called before the first frame update
@@ -29,6 +32,11 @@ public class CharacterInputHandler : MonoBehaviour
         {
             jump = 0;
         }
+        isJumpPressed = Input.GetKeyDown(KeyCode.Space);
+
+
+        print(isJumpPressed);
+        isGrabPressed = Input.GetKeyDown(KeyCode.E);
     }
 
     /// <summary>
@@ -40,6 +48,9 @@ public class CharacterInputHandler : MonoBehaviour
         NetworkInputData networkInputData = new NetworkInputData();
 
         networkInputData.movementInput = moveInputVector;
+
+        networkInputData.isJumpPressed = isJumpPressed;
+        networkInputData.isGrabPressed = isGrabPressed;
 
         return networkInputData;
     }

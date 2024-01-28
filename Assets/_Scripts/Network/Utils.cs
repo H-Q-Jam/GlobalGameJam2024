@@ -29,7 +29,7 @@ public static class Utils
 
     public static Vector3 GetRandomSpawnPoint()
     {
-        return new Vector3(Random.Range(-10,10),3,Random.Range(-10,10));
+        return new Vector3(Random.Range(-10,10),1.1f,Random.Range(-10,10));
     }
 
 }

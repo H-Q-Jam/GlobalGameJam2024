@@ -7,6 +7,7 @@ public class CharacterMouvementHandler2 : NetworkBehaviour
 {
     PlayerRigidbodyMovementNetwork playerRigidbodyMovementNetwork;
 
+    PlayerGrab playerGrab;
 
 
 
@@ -49,6 +50,16 @@ public class CharacterMouvementHandler2 : NetworkBehaviour
             moveDirection.Normalize();
 
             playerRigidbodyMovementNetwork.Move(moveDirection);
+
+            if(networkInputData.isJumpPressed)
+            {
+                playerRigidbodyMovementNetwork.Jump();
+            }
+
+            if(networkInputData.isGrabPressed)
+            {
+                playerGrab.HandleGrabInput();
+            }
         }
     }
 }
