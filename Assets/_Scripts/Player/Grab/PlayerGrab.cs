@@ -17,7 +17,7 @@ public class PlayerGrab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // HandleGrabInput();
+       HandleGrabInput();
     }
 
     private bool GrabOrUnGrab;
@@ -55,11 +55,11 @@ public class PlayerGrab : MonoBehaviour
 
             if (_grabHand._interactableGrab != null)
             {
-                //ArmsGrab();
+                ArmsGrab();
             }
             else
             {
-                //ArmsUngrab();
+                ArmsUngrab();
             }
         }
     }

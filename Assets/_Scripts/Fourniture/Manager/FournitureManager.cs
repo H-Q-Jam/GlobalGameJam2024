@@ -64,7 +64,11 @@ public class FournitureManager : MonoBehaviour
         if (meshRenderer == null)
         {
             meshRenderer = GetComponentInParent<MeshRenderer>();
-        }
+        } 
+        if (meshRenderer == null)
+        {
+            meshRenderer = GetComponentInChildren<MeshRenderer>();
+        } 
 
         if (meshRenderer != null)
         {

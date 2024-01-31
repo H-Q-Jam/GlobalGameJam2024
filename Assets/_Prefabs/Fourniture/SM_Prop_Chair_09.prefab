@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4832846531654218}
   - component: {fileID: 4199205197493902416}
   - component: {fileID: 189466619159218788}
-  - component: {fileID: 7861267821527576321}
-  - component: {fileID: 6377217634366871672}
   - component: {fileID: 3194000235328456934}
+  - component: {fileID: 5514601304387875733}
+  - component: {fileID: 2324793221490254292}
   m_Layer: 8
   m_Name: SM_Prop_Chair_09
   m_TagString: Untagged
@@ -87,7 +87,36 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: db6f446874a08324b9a2cc124543c19e, type: 3}
---- !u!114 &7861267821527576321
+--- !u!114 &3194000235328456934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764144778791446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5c5e3f183e57b4fb4d7ca357d741ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nom: Chaise
+  poids: 100
+  taille: 1
+  _whoCanGrab: 0
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  valideColor: {r: 0.48499107, g: 0.9924528, b: 0.6099, a: 1}
+  meshRenderer: {fileID: 0}
+  material: {fileID: 0}
+  rb: {fileID: 0}
+  rightJoint: {fileID: 3639852705174957985}
+  leftJoint: {fileID: 3272278174801133537}
+  layerCollision:
+    serializedVersion: 2
+    m_Bits: 256
+  layerGrabed:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &5514601304387875733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +144,7 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
---- !u!114 &6377217634366871672
+--- !u!114 &2324793221490254292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,37 +166,8 @@ MonoBehaviour:
     RawGuidValue: 3250b357f6aee8949a2aaaf6c2e39648
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 7861267821527576321}
+  - {fileID: 5514601304387875733}
   SimulationBehaviours: []
---- !u!114 &3194000235328456934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1764144778791446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5c5e3f183e57b4fb4d7ca357d741ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nom: Chaise
-  poids: 5
-  taille: 1
-  _whoCanGrab: 0
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  valideColor: {r: 0.48499107, g: 0.9924528, b: 0.6099, a: 1}
-  meshRenderer: {fileID: 0}
-  material: {fileID: 0}
-  rb: {fileID: 0}
-  rightJoint: {fileID: 3639852705174957985}
-  leftJoint: {fileID: 3272278174801133537}
-  layerCollision:
-    serializedVersion: 2
-    m_Bits: 256
-  layerGrabed:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!1 &794878675783137026
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8921225124737413986}
   - component: {fileID: 4543235222472049925}
   - component: {fileID: 1246275983681585231}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fourniture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -288,8 +288,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3739907851779861381}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.91008264, z: -0, w: 0.4144268}
-  m_LocalPosition: {x: 58.31766, y: -0.5999994, z: -59.636604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -409,7 +409,7 @@ Transform:
   m_GameObject: {fileID: 7384165840326281404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.391, y: 0.847, z: -0.463}
+  m_LocalPosition: {x: 0.25, y: 0.847, z: -0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -551,7 +551,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7384165840326281404}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 4199205197493902416}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -587,7 +587,7 @@ Transform:
   m_GameObject: {fileID: 8752471119388963124}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.383, y: 0.847, z: -0.463}
+  m_LocalPosition: {x: -0.25, y: 0.847, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -729,7 +729,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8752471119388963124}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 4199205197493902416}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity

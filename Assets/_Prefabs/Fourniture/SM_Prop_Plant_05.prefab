@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 4902742816487924}
   - component: {fileID: 180203652533966820}
   - component: {fileID: 7486460387755034946}
-  - component: {fileID: 5088282206323340917}
-  - component: {fileID: 9079016405105132981}
   - component: {fileID: 8620984364299765573}
   m_Layer: 8
   m_Name: SM_Prop_Plant_05
@@ -29,13 +27,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389249516748214}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 364971330060927787}
-  - {fileID: 5999482327330134683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &180203652533966820
@@ -46,9 +43,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389249516748214}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -84,61 +81,9 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!114 &5088282206323340917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389249516748214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1710889294, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interpolationDataSource: 0
-  InterpolationSpace: 0
-  InterpolationTarget: {fileID: 364971330060927787}
-  InterpolateErrorCorrection: 1
-  InterpolatedErrorCorrectionSettings:
-    MinRate: 3.3
-    MaxRate: 10
-    PosBlendStart: 0.25
-    PosBlendEnd: 1
-    PosMinCorrection: 0.025
-    PosTeleportDistance: 2
-    RotBlendStart: 0.1
-    RotBlendEnd: 0.5
-    RotTeleportRadians: 1.5
-  UseLegacySharedModeInterpolation: 0
-  TargetInterpolationDelay: 0.03
---- !u!114 &9079016405105132981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389249516748214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectInterest: 1
-  DefaultInterestGroups: []
-  DestroyWhenStateAuthorityLeaves: 0
-  AllowStateAuthorityOverride: 1
-  AoiPositionSource: {fileID: 0}
-  Flags: 2305
-  NetworkGuid:
-    RawGuidValue: 1dd1177e0d61d794ba8753dba0199b03
-  NestedObjects: []
-  NetworkedBehaviours:
-  - {fileID: 5088282206323340917}
-  SimulationBehaviours: []
+  m_Mesh: {fileID: 4300000, guid: 4f2151ca216de594f8f307f102f7d5ca, type: 3}
 --- !u!114 &8620984364299765573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nom: Plante
-  poids: 10
+  poids: 100
   taille: 1
   _whoCanGrab: 0
   normalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -434,7 +379,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3606905791908282487}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 180203652533966820}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -612,7 +557,7 @@ FixedJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4862742952728273736}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 180203652533966820}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -644,14 +589,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6397014909861751226}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.91008264, z: -0, w: 0.4144268}
-  m_LocalPosition: {x: 58.31766, y: -0.5999994, z: -59.636604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6987234091002761509}
   - {fileID: 8984282919721230400}
-  m_Father: {fileID: 4902742816487924}
+  m_Father: {fileID: 364971330060927787}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7112554118636328793
 GameObject:
@@ -664,7 +609,7 @@ GameObject:
   - component: {fileID: 364971330060927787}
   - component: {fileID: 8464803416948945330}
   - component: {fileID: 8703890848687294517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_Plant_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,6 +630,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7967215150769154436}
+  - {fileID: 5999482327330134683}
   m_Father: {fileID: 4902742816487924}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8464803416948945330
